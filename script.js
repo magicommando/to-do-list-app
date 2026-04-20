@@ -96,6 +96,13 @@ function loadTasks() {
     }
 }
 loadTasks();
+function clearAllTasks() {
+    tasks = [];
+    saveTasks();   // keep storage in sync
+    renderTasks(); // update UI
+}
+
+
 
 
 
