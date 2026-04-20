@@ -102,6 +102,7 @@ function clearAllTasks() {
     renderTasks(); // update UI
 }
 
+loadTasks();
 
 
 
