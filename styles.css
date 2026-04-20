@@ -122,4 +122,21 @@ button:hover {
     from { opacity: 0; transform: translateY(5px); }
     to { opacity: 1; transform: translateY(0); }
 }
+.clear-btn {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #ff9933;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.clear-btn:hover {
+    background-color: #e68a00;
+}
+
+
 
