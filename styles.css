@@ -1,25 +1,14 @@
+/* ------------------------------
+   Global Styles
+------------------------------ */
 body {
     font-family: Arial, sans-serif;
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 20px;
-}
-
-#task-form {
-    display: flex;
-    gap: 10px;
-}
-
-#task-list {
-    margin-top: 20px;
-    list-style: none;
+    background: #f2f2f2;
+    margin: 0;
     padding: 0;
 }
 
-.completed {
-    text-decoration: line-through;
-    opacity: 0.6;
-}
+/* Centered card container */
 .container {
     background: #ffffff;
     padding: 25px;
@@ -28,10 +17,21 @@ body {
     max-width: 450px;
     margin: 40px auto;
 }
+
+/* ------------------------------
+   Header
+------------------------------ */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* ------------------------------
+   Form Styles
+------------------------------ */
 #task-form {
     display: flex;
     gap: 10px;
-    margin-top: 20px;
 }
 
 #task-input {
@@ -62,6 +62,15 @@ button:hover {
     background-color: #357ABD;
 }
 
+/* ------------------------------
+   Task List Styles
+------------------------------ */
+#task-list {
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
+}
+
 #task-list li {
     display: flex;
     justify-content: space-between;
@@ -71,6 +80,7 @@ button:hover {
     margin-top: 10px;
     border-radius: 8px;
     transition: background 0.2s ease;
+    animation: fadeIn 0.2s ease-in;
 }
 
 #task-list li:hover {
@@ -82,11 +92,15 @@ button:hover {
     font-size: 16px;
 }
 
+/* Completed task style */
 .completed {
     text-decoration: line-through;
     opacity: 0.6;
 }
 
+/* ------------------------------
+   Delete Button
+------------------------------ */
 .delete-btn {
     background-color: #ff4d4d;
     border: none;
@@ -101,10 +115,9 @@ button:hover {
     background-color: #d93636;
 }
 
-#task-list li {
-    animation: fadeIn 0.2s ease-in;
-}
-
+/* ------------------------------
+   Animations
+------------------------------ */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(5px); }
     to { opacity: 1; transform: translateY(0); }
