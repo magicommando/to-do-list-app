@@ -59,4 +59,15 @@ function deleteTask(id) {
     renderTasks();
 }
 
+function addTask(text) {
+    const task = {
+        id: Date.now(),
+        text: text,
+        completed: false
+    };
+
+    tasks.push(task);
+    renderTasks();
+}
+
 
