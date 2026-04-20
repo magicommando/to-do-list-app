@@ -1,3 +1,4 @@
+const clearAllBtn = document.getElementById('clear-all');
 const form = document.getElementById('task-form');
 const input = document.getElementById('task-input');
 const list = document.getElementById('task-list');
@@ -5,10 +6,20 @@ const list = document.getElementById('task-list');
 let tasks = [];
 form.addEventListener('submit', function(event) {
     event.preventDefault();
+    
 
     const text = input.value.trim();
     if (text === "") return;
 
+    addTask(text);
+    input.value = "";
+});
+clearAllBtn.addEventListener('click', clearAllTasks);
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const text = input.value.trim();
+    if (text === "") return;
     addTask(text);
     input.value = "";
 });
