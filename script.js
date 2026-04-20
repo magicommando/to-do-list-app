@@ -51,13 +51,18 @@ function toggleTask(id) {
     tasks = tasks.map(task =>
         task.id === id ? { ...task, completed: !task.completed } : task
     );
-
+    saveTasks();
     renderTasks();
 }
 function deleteTask(id) {
     tasks = tasks.filter(task => task.id !== id);
     renderTasks();
+}   saveTasks();
+function saveTasks() {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
 }
+
+
 
 function addTask(text) {
     const task = {
@@ -67,7 +72,19 @@ function addTask(text) {
     };
 
     tasks.push(task);
+    saveTasks();
     renderTasks();
 }
+
+
+function loadTasks() {
+    const storedTasks = localStorage.getItem('tasks');
+    if (storedTasks) {
+        tasks = JSON.parse(storedTasks);
+        renderTasks();
+    }
+}
+loadTasks();
+
 
 
