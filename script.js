@@ -4,9 +4,10 @@ const input = document.getElementById('task-input');
 const list = document.getElementById('task-list');
 
 let tasks = [];
+
+// Add task on form submit
 form.addEventListener('submit', function(event) {
     event.preventDefault();
-    
 
     const text = input.value.trim();
     if (text === "") return;
@@ -14,16 +15,11 @@ form.addEventListener('submit', function(event) {
     addTask(text);
     input.value = "";
 });
+
+// Clear all tasks
 clearAllBtn.addEventListener('click', clearAllTasks);
 
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const text = input.value.trim();
-    if (text === "") return;
-    addTask(text);
-    input.value = "";
-});
-
+// Render tasks
 function renderTasks() {
     list.innerHTML = "";
 
@@ -43,21 +39,19 @@ function renderTasks() {
         deleteBtn.textContent = "Delete";
         deleteBtn.classList.add('delete-btn');
 
-        // When delete button is clicked
+        // Delete task
         deleteBtn.addEventListener('click', () => deleteTask(task.id));
 
-        // When text is clicked, toggle completion
+        // Toggle completion
         textSpan.addEventListener('click', () => toggleTask(task.id));
 
-        // Add elements to li
         li.appendChild(textSpan);
         li.appendChild(deleteBtn);
-
-        // Add li to list
         list.appendChild(li);
     });
 }
 
+// Toggle task complete
 function toggleTask(id) {
     tasks = tasks.map(task =>
         task.id === id ? { ...task, completed: !task.completed } : task
@@ -65,16 +59,20 @@ function toggleTask(id) {
     saveTasks();
     renderTasks();
 }
+
+// Delete task
 function deleteTask(id) {
     tasks = tasks.filter(task => task.id !== id);
+    saveTasks();
     renderTasks();
-}   saveTasks();
+}
+
+// Save to localStorage
 function saveTasks() {
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
-
-
+// Add new task
 function addTask(text) {
     const task = {
         id: Date.now(),
@@ -87,7 +85,7 @@ function addTask(text) {
     renderTasks();
 }
 
-
+// Load tasks on page start
 function loadTasks() {
     const storedTasks = localStorage.getItem('tasks');
     if (storedTasks) {
@@ -95,15 +93,13 @@ function loadTasks() {
         renderTasks();
     }
 }
-loadTasks();
+
+// Clear all tasks
 function clearAllTasks() {
     tasks = [];
-    saveTasks();   // keep storage in sync
-    renderTasks(); // update UI
+    saveTasks();
+    renderTasks();
 }
 
 loadTasks();
-
-
-
 
